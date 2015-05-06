@@ -47,7 +47,7 @@ class PhotosController < ApplicationController
     @p.updated_at=Date.today.to_s
     @p.save
 
-  redirect_to("http://localhost:3000/photos/:id")
+  redirect_to("http://localhost:3000/photos/#{@p.id}")
 
   end
 end
