@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
   def create_row
      @p=Photo.new
      @p.id =Photo.count+1
-     @p.source =[:the_source]
+     @p.source = params[:the_source]
      @p.caption = params[:the_caption]
      @p.created_at=Date.today.to_s
      @p.updated_at=Date.today.to_s
@@ -36,6 +36,18 @@ class PhotosController < ApplicationController
 
   def edit_form
       @p=Photo.find_by({:id => params[:id]})
+      @id=params[:id]
   end
 
+  def update_row
+
+    @p=Photo.find_by({:id => params[:id]})
+    @p.source = params[:the_source]
+    @p.caption = params[:the_caption]
+    @p.updated_at=Date.today.to_s
+    @p.save
+
+  redirect_to("http://localhost:3000/photos/:id")
+
+  end
 end
