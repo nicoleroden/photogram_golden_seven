@@ -36,7 +36,6 @@ class PhotosController < ApplicationController
 
   def edit_form
       @p=Photo.find_by({:id => params[:id]})
-      @id=params[:id]
   end
 
   def update_row
@@ -47,7 +46,7 @@ class PhotosController < ApplicationController
     @p.updated_at=Date.today.to_s
     @p.save
 
-  redirect_to("http://localhost:3000/photos/#{@p.id}")
+  redirect_to("http://localhost:3000/photos")
 
   end
 end
